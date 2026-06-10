@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
+  "name": "gws",
+  "displayName": "Google Workspace CLI",
+  "version": "0.22.5",
+  "description": "Agent skills for the gws CLI: Gmail, Drive, Calendar, Sheets, Docs, Chat, Meet, and more, plus recipe and persona skills.",
+  "author": {
+    "name": "Justin Poehnelt",
+    "email": "justin.poehnelt@gmail.com"
+  },
+  "homepage": "https://github.com/googleworkspace/cli",
+  "repository": "https://github.com/googleworkspace/cli",
+  "license": "Apache-2.0",
+  "keywords": [
+    "google-workspace",
+    "gmail",
+    "google-drive",
+    "google-calendar",
+    "google-sheets",
+    "google-docs",
+    "agent-skills",
+    "automation"
+  ]
+}

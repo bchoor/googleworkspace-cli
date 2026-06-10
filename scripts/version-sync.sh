@@ -33,6 +33,17 @@ node -e "
   require('fs').writeFileSync('./npm/package.json', JSON.stringify(pkg, null, 2) + '\n');
 "
 
+# Update Claude Code plugin and marketplace manifests
+node -e "
+  const fs = require('fs');
+  for (const file of ['./.claude-plugin/plugin.json', './.claude-plugin/marketplace.json']) {
+    const json = JSON.parse(fs.readFileSync(file, 'utf8'));
+    if (json.version) json.version = '${VERSION}';
+    for (const plugin of json.plugins ?? []) plugin.version = '${VERSION}';
+    fs.writeFileSync(file, JSON.stringify(json, null, 2) + '\n');
+  }
+"
+
 # Update Cargo.lock to match
 cargo generate-lockfile
 
@@ -45,5 +56,5 @@ fi
 cargo run -- generate-skills --output-dir skills
 
 # Stage the changed files so changesets/action commits them
-git add crates/*/Cargo.toml Cargo.lock flake.nix flake.lock skills/ npm/package.json
+git add crates/*/Cargo.toml Cargo.lock flake.nix flake.lock skills/ npm/package.json .claude-plugin/
 
